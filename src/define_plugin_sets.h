@@ -526,7 +526,7 @@ To create/register a plugin, you have to :
     #define USES_P031   // SHT1X
     #define USES_P032   // MS5611
     #define USES_P033   // Dummy
-    #define USES_P034   // DHT12
+//    #define USES_P034   // DHT12
 //    #define USES_P035   // IRTX
     #define USES_P036   // FrameOLED
     #define USES_P037   // MQTTImport
@@ -542,10 +542,10 @@ To create/register a plugin, you have to :
     #define USES_P049   // MHZ19
 
     #define USES_P052   // SenseAir
-    #define USES_P056   // SDS011-Dust
+//    #define USES_P056   // SDS011-Dust
     #define USES_P059   // Encoder
 
-//    #define USES_P153	// MAX44009
+    #define USES_P153	// MAX44009
     #define USES_P199   //kontroler akwarium
 
   //  #define USES_P063   // TTP229_KeyPad
