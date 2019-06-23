@@ -24,6 +24,23 @@ int Plugin_012_mode = 1;
 #define P12_Nlines 4        // The number of different lines which can be displayed
 #define P12_Nchars 80
 
+void Plugin_012_RefreshLCD(int TaskIndex)
+{
+  char deviceTemplate[P12_Nlines][P12_Nchars];
+  LoadCustomTaskSettings(TaskIndex, (byte*)&deviceTemplate, sizeof(deviceTemplate));
+
+  for (byte x = 0; x < Plugin_012_rows; x++)
+  {
+    String tmpString = deviceTemplate[x];
+    if (lcd && tmpString.length())
+    {
+      String newString = P012_parseTemplate(tmpString, Plugin_012_cols);
+      lcd->setCursor(0, x);
+      lcd->print(newString);
+    }
+  }
+}
+
 boolean Plugin_012(byte function, struct EventStruct *event, String& string)
 {
   boolean success = false;
@@ -188,19 +205,8 @@ boolean Plugin_012(byte function, struct EventStruct *event, String& string)
 
     case PLUGIN_READ:
       {
-        char deviceTemplate[P12_Nlines][P12_Nchars];
-        LoadCustomTaskSettings(event->TaskIndex, (byte*)&deviceTemplate, sizeof(deviceTemplate));
-
-        for (byte x = 0; x < Plugin_012_rows; x++)
-        {
-          String tmpString = deviceTemplate[x];
-          if (lcd && tmpString.length())
-          {
-            String newString = P012_parseTemplate(tmpString, Plugin_012_cols);
-            lcd->setCursor(0, x);
-            lcd->print(newString);
-          }
-        }
+        //Added by Menuet@2019.06.05: refresh function is now separated to make possible refresh by command
+        Plugin_012_RefreshLCD(event->TaskIndex);
         success = false;
         break;
       }
@@ -225,6 +231,15 @@ boolean Plugin_012(byte function, struct EventStruct *event, String& string)
           }
           else if (tmpString.equalsIgnoreCase(F("Clear"))){
               lcd->clear();
+          }
+          //Added by Menuet@2019.06.05: New command to swith on backlight on configured time
+          else if (tmpString.equalsIgnoreCase(F("Light"))) {
+              lcd->backlight();
+              displayTimer = PCONFIG(2);
+          }
+          //Added by Menuet@2019.06.05: New command to refresh lcd on demand
+          else if (tmpString.equalsIgnoreCase(F("Refresh"))){
+              Plugin_012_RefreshLCD(event->TaskIndex);
           }
         }
         else if (lcd && tmpString.equalsIgnoreCase(F("LCD")))
@@ -297,7 +312,7 @@ String P012_parseTemplate(String &tmpString, byte lineSize) {
   const char degree[3] = {0xc2, 0xb0, 0};  // Unicode degree symbol
   const char degree_lcd[2] = {0xdf, 0};  // P012_LCD degree symbol
   result.replace(degree, degree_lcd);
-  
+
   char unicodePrefix = 0xc3;
   if (result.indexOf(unicodePrefix) != -1) {
     // See: https://github.com/letscontrolit/ESPEasy/issues/2081

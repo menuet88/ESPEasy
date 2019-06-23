@@ -497,7 +497,7 @@ To create/register a plugin, you have to :
     #define USES_P005   // DHT
     #define USES_P006   // BMP085
     #define USES_P007   // PCF8591
-    #define USES_P008   // RFID
+  //  #define USES_P008   // RFID
     #define USES_P009   // MCP
 
     #define USES_P010   // BH1750
@@ -507,7 +507,7 @@ To create/register a plugin, you have to :
     #define USES_P014   // SI7021
     #define USES_P015   // TSL2561
 //    #define USES_P016   // IR
-    #define USES_P017   // PN532
+//    #define USES_P017   // PN532
     #define USES_P018   // Dust
     #define USES_P019   // PCF8574
 
@@ -533,7 +533,7 @@ To create/register a plugin, you have to :
     #define USES_P038   // NeoPixel
     #define USES_P039   // Environment - Thermocouple
 
-    #define USES_P040   // RFID - ID12LA/RDM6300
+  //  #define USES_P040   // RFID - ID12LA/RDM6300
     #define USES_P041   // NeoClock
     #define USES_P042   // Candle
     #define USES_P043   // ClkOutput
@@ -545,19 +545,22 @@ To create/register a plugin, you have to :
     #define USES_P056   // SDS011-Dust
     #define USES_P059   // Encoder
 
-    #define USES_P063   // TTP229_KeyPad
-    #define USES_P079   // Wemos Motoshield
+//    #define USES_P153	// MAX44009
+    #define USES_P199   //kontroler akwarium
+
+  //  #define USES_P063   // TTP229_KeyPad
+  //  #define USES_P079   // Wemos Motoshield
 #endif
 
 
 #ifdef CONTROLLER_SET_STABLE
-    #define USES_C001   // Domoticz HTTP
-    #define USES_C002   // Domoticz MQTT
-    #define USES_C003   // Nodo telnet
-    #define USES_C004   // ThingSpeak
+//    #define USES_C001   // Domoticz HTTP
+//    #define USES_C002   // Domoticz MQTT
+//    #define USES_C003   // Nodo telnet
+//    #define USES_C004   // ThingSpeak
     #define USES_C005   // OpenHAB MQTT
     #define USES_C006   // PiDome MQTT
-    #define USES_C007   // Emoncms
+//    #define USES_C007   // Emoncms
     #define USES_C008   // Generic HTTP
     #define USES_C009   // FHEM HTTP
     #define USES_C010   // Generic UDP

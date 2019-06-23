@@ -120,7 +120,7 @@ boolean Plugin_021(byte function, struct EventStruct *event, String& string)
         float value = UserVar[BaseVarIndex];
         byte state = switchstate[event->TaskIndex];
         // compare with threshold value
-        float valueLowThreshold = PCONFIG_FLOAT(0) - (PCONFIG_FLOAT(1) / 2);
+      float valueLowThreshold = PCONFIG_FLOAT(0) - (PCONFIG_FLOAT(1) / 2);
         float valueHighThreshold = PCONFIG_FLOAT(0) + (PCONFIG_FLOAT(1) / 2);
         if (value <= valueLowThreshold)
           state = 1;
