@@ -44,8 +44,8 @@ void check_size() {
 #define DEFAULT_AP_KEY      "configesp"         // Enter network WPA key for AP (config) mode
 
 // --- Wifi Client Mode -----------------------------------------------------------------------------
-#define DEFAULT_SSID        "MysiaPysia"              // Enter your Wifi network SSID
-#define DEFAULT_KEY         "UlciaUlcia"            // Enter your Wifi network WPA key
+#define DEFAULT_SSID        "aaaa"              // Enter your Wifi network SSID
+#define DEFAULT_KEY         "aaaa"            // Enter your Wifi network WPA key
 
 #define DEFAULT_USE_STATIC_IP   false           // (true|false) enabled or disabled static IP
 #define DEFAULT_IP          "192.168.0.50"      // Enter your IP address
